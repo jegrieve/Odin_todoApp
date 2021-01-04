@@ -6,7 +6,37 @@
     <title>Document</title>
 </head>
 <body>
-    <div class = "purple"> hello </div>
+    <div class = "container-fluid p-0">
+        <section class = "row"> <!-- navbar -->
+            <nav class = "col navbar justify-content-center"><b>TodoApp</b></nav>
+        </section>
+        <section class = "row"> <!-- main content-->
+            <div class = "col-3 project-menu"><!-- project-menu col 4 -->
+                <div class = "add-list d-flex justify-content-center">
+                    <svg class = "add-list-btn" xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                      </svg>
+                </div>
+                <div class = "todo-project">project 1</div>
+                <div class = "todo-project">project 2</div>
+                <div class = "todo-project">project 3</div>
+            </div>
+
+            <div class = "col-9 project-todos d-flex justify-content-center"><!--  todos on the right, col 8 -->
+                <div>
+                <svg class = "add-todo-btn" xmlns="http://www.w3.org/2000/svg" width="45" height="45" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                  </svg>
+                <div id = "project-content">
+                    <div>todo1</div>
+                    <div>todo2</div>
+                    <div>todo3</div>
+                </div>
+            </div>
+        </div>
+        </section>
+    </div>
     <script src = "main.js"></script>
 </body>
 </html>
