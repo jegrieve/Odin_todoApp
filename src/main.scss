@@ -1,2 +1,34 @@
 @import "~bootstrap/scss/bootstrap";
 
+.container-fluid{
+    overflow: hidden;
+    }
+
+.navbar {
+    min-height: 43px;
+    background-color:#db4c3f;
+    color: white;
+}
+
+.project-menu {
+    background-color:#FAFAFA;
+    min-height:710px;
+}
+
+.add-list {
+    padding-top: 10px;
+    &:hover {
+        cursor: pointer;
+      }
+}
+
+.todo-project {
+    &:hover {
+        background-color: rgba(114, 110, 110, 0.2);
+        cursor: pointer;
+      }
+}
+
+.add-todo-btn {
+    @extend .add-list;
+}
