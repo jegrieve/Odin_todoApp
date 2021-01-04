@@ -17,6 +17,11 @@
   },
   "homepage": "https://github.com/jegrieve/Odin_todoApp#readme",
   "devDependencies": {
+    "bootstrap": "^4.5.3",
+    "css-loader": "^5.0.1",
+    "node-sass": "^5.0.0",
+    "sass-loader": "^10.1.0",
+    "style-loader": "^2.0.0",
     "webpack": "^5.11.1",
     "webpack-cli": "^4.3.1"
   }
