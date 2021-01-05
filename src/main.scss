@@ -29,6 +29,25 @@
       }
 }
 
-.add-todo-btn {
+#add-list-btn {
     @extend .add-list;
 }
+
+#add-todo-btn {
+    @extend .add-list;
+}
+
+.todo {
+    @extend .todo-project;
+}
+
+#add-project {
+    display: none;
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    border: 1px solid black;
+    right: 350px;
+    border-radius: 20px;
+}
+
