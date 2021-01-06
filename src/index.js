@@ -1,52 +1,50 @@
 import "./main.scss";
-import {openListInput, closeListInput, submitListInput, resetListInput} from "./listInputFunctions.js"
-// import {addListItem, renderListItems} from "./listHandlerFunctions.js"
-
-//Make a module
-const listItems = [
-    // {title: "project1", id: 12312312},
-    // {title: "project2", id: 12344312},
-    // {title: "project3", id: 12543645}
-];
-
-function addListItem(projectTitle) {
-    listItems.push({projectTitle: projectTitle});
-}
-
-function addListIds() {
-    listItems.forEach((el, i) => {
-        el.id = i;
-    });
-}
+import listData from "./listDataHandlers.js"
+import listInputFunctions from "./listInputFunctions.js"
+import todoInputFunctions from "./todoInputFunctions.js"
 
 
-function renderListItems() {
-    const projectList = document.getElementById("project-list");
-    projectList.innerHTML = "";
-    addListIds();
-    listItems.forEach((el) => {
-        const elDiv = document.createElement("div");
-        elDiv.innerHTML = el.projectTitle;
-        elDiv.id = el.id;
-        elDiv.classList.add("todo-project");
-        projectList.appendChild(elDiv)
-    })
-}
-//Make a module
 
+
+//DOM stuff
+//Todolist input buttons
 const addListBtn = document.getElementById("add-list-btn");
-addListBtn.addEventListener("click", openListInput);
+addListBtn.addEventListener("click", listInputFunctions.openListInput);
 
 const closeListBtn = document.getElementById("close-list-btn");
-closeListBtn.addEventListener("click", closeListInput);
+closeListBtn.addEventListener("click", listInputFunctions.closeListInput);
 
 const submitListBtn = document.getElementById("submit-list-input") 
 submitListBtn.addEventListener("click", function(e) {
     e.preventDefault();
-    addListItem(submitListInput()); // add this value to the objectArray
-    resetListInput(); 
-    renderListItems();
+    listData.addListItem(listInputFunctions.submitListInput()); // add this value to the objectArray
+    listInputFunctions.resetListInput(); 
+    listData.renderListItems();
 })
+
+const projectListItems = document.getElementById("project-list");
+projectListItems.addEventListener("click", function(e) {
+    if (e.target.id) {
+        listData.renderTodos(e.target.id);
+    }
+})
+
+//Todo input buttons
+const addTodoBtn = document.getElementById("add-todo-btn");
+addTodoBtn.addEventListener("click", todoInputFunctions.openTodoInput);
+const closeTodoBtn = document.getElementById("close-todo-btn");
+closeTodoBtn.addEventListener("click", todoInputFunctions.closeTodoInput);
+const submitTodoBtn = document.getElementById("submit-todo-input") 
+submitTodoBtn.addEventListener("click", function(e) {
+    e.preventDefault();
+
+    
+    // listData.addListItem(listInputFunctions.submitListInput()); 
+    // listInputFunctions.resetListInput(); 
+    // listData.renderListItems();
+})
+//DOM STUFF
+
 
 //addlistitem should add the listitem to the listitemsArray
 //renderListItems should go through the listItems array and create divs +

@@ -51,3 +51,7 @@
     border-radius: 20px;
 }
 
+
+#add-todo {
+    @extend #add-project;
+}
