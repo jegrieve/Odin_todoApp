@@ -27,7 +27,7 @@ const listData = (() => {
         id = Number(id.substring(1));
         const projectListObj = listItems[id];
         const projectTodos = document.querySelector(".todo-list");
-        projectTodos.id = oldId;
+        projectTodos.id = "t" + id;
         projectTodos.innerHTML = "";
 
         projectListObj.todos.forEach((el, i) => {
