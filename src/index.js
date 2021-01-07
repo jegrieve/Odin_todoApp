@@ -2,7 +2,7 @@ import "./main.scss";
 import listData from "./listDataHandlers.js"
 import listInputFunctions from "./listInputFunctions.js"
 import todoInputFunctions from "./todoInputFunctions.js"
-
+import todoDataHandlers from "./todoDataHandlers.js"
 
 
 
@@ -25,7 +25,7 @@ submitListBtn.addEventListener("click", function(e) {
 const projectListItems = document.getElementById("project-list");
 projectListItems.addEventListener("click", function(e) {
     if (e.target.id) {
-        listData.renderTodos(e.target.id);
+        listData.renderTodoList(e.target.id);
     }
 })
 
@@ -37,11 +37,9 @@ closeTodoBtn.addEventListener("click", todoInputFunctions.closeTodoInput);
 const submitTodoBtn = document.getElementById("submit-todo-input") 
 submitTodoBtn.addEventListener("click", function(e) {
     e.preventDefault();
-
-    
-    // listData.addListItem(listInputFunctions.submitListInput()); 
-    // listInputFunctions.resetListInput(); 
-    // listData.renderListItems();
+    listData.addTodoItem(todoDataHandlers.newTodo(todoInputFunctions.submitTodoInput()));
+    todoInputFunctions.resetTodoInput();
+    listData.renderTodoList();
 })
 //DOM STUFF
 

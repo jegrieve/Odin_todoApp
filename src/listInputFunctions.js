@@ -9,8 +9,7 @@ const listInputFunctions = (() => {
         return document.getElementById("add-project-input").value
     };
     const resetListInput = () => {
-        const projectInput = document.getElementById("add-project-input");
-        projectInput.value = "";
+        document.getElementById("add-project-input").value = "";
         closeListInput();
     };
     return {openListInput, closeListInput, submitListInput, resetListInput};

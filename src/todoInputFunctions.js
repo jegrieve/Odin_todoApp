@@ -5,7 +5,14 @@ const todoInputFunctions = (() => {
     const closeTodoInput = () => {
         document.getElementById("add-todo").style.display = "none";
     }
-    return {openTodoInput, closeTodoInput}
+    const submitTodoInput = () => {
+        return document.getElementById("add-todo-input").value;
+    }
+    const resetTodoInput = () => {
+        document.getElementById("add-todo-input").value = "";
+        closeTodoInput();
+    }
+    return {openTodoInput, closeTodoInput, submitTodoInput, resetTodoInput}
 })();
 
 export default todoInputFunctions;

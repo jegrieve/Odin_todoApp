@@ -2,14 +2,28 @@ const listData = (() => {
     const listItems = [];
     const addListItem = (projectTitle) => {
         listItems.push({projectTitle: projectTitle, 
-            todos: ["todo1","todo2","todo3"] // this will be created with factory
+            todos: [{title: "todo1"}]
         });
     };
     const addListIds = () => {
         listItems.forEach((el, i) => {
             el.id = i;
-        });
+        })
     };
+
+    const addTodoIds = () => {
+        listItems.forEach((el, i) => {
+            el.todos.forEach((el, i) => {
+                el.id = i;
+            })
+        })
+    }
+
+    const addTodoItem = (todo) => {
+        const currentListId = Number(document.querySelector(".todo-list").id.substring(1))
+        listItems[currentListId].todos.push(todo);
+        }
+
     const renderListItems = () => {
         const projectList = document.getElementById("project-list");
         projectList.innerHTML = "";
@@ -22,7 +36,21 @@ const listData = (() => {
             projectList.appendChild(elDiv)
         });
     };
-    const renderTodos = (id) => { //need to change this later
+    const renderTodoItems = () => {
+        const todoList = document.querySelector(".todo-list")
+        todoList.innerHTML = "";
+        addTodoIds();
+        listItems.forEach((el) => {
+            el.todos.forEach((todo, i) => {
+                const elDiv = document.createElement("div");
+                elDiv.innerHTML = todo.title;
+                elDiv.id = i;
+                elDiv.classList.add("todo");
+                todoList.appendChild(elDiv)
+            })
+        });
+    }
+    const renderTodoList = (id) => { 
         const oldId = id;
         id = Number(id.substring(1));
         const projectListObj = listItems[id];
@@ -30,14 +58,9 @@ const listData = (() => {
         projectTodos.id = "t" + id;
         projectTodos.innerHTML = "";
 
-        projectListObj.todos.forEach((el, i) => {
-            const todoItem = document.createElement("div");
-            todoItem.innerHTML = projectListObj.todos[i];
-            todoItem.id = i; 
-            projectTodos.appendChild(todoItem);
-        })
+        renderTodoItems();
     }
-    return {listItems, addListItem , renderListItems, renderTodos}
+    return {listItems, addListItem , renderListItems, renderTodoList, addTodoItem, renderTodoItems}
 })();
 
 export default listData;
