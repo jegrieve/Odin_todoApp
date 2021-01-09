@@ -33,6 +33,11 @@
     @extend .add-list;
 }
 
+.todo-list-name {
+    font-size: 30px;
+    font-weight: bold;
+}
+
 #add-todo-btn {
     @extend .add-list;
 }

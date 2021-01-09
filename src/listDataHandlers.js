@@ -1,66 +1,51 @@
-const listData = (() => {
-    const listItems = [];
-    const addListItem = (projectTitle) => {
-        listItems.push({projectTitle: projectTitle, 
-            todos: [{title: "todo1"}]
+const listDataHandlers = (() => {
+    const listItems = []; //This is where listobjs are stored
+
+    const addListItem = (title) => {// This is where listObjs are added
+        listItems.push({title: title, 
+                        todos: [],
+                        id: null
         });
     };
-    const addListIds = () => {
-        listItems.forEach((el, i) => {
-            el.id = i;
-        })
-    };
 
-    const addTodoIds = () => {
-        listItems.forEach((el, i) => {
-            el.todos.forEach((el, i) => {
-                el.id = i;
-            })
+    const addListIds = () => {//Gives each list an id corresponding to position in array
+        listItems.forEach((list, i) => {
+            list.id = i;
         })
     }
 
-    const addTodoItem = (todo) => {
-        const currentListId = Number(document.querySelector(".todo-list").id.substring(1))
-        listItems[currentListId].todos.push(todo);
-        }
-
-    const renderListItems = () => {
+    const renderListItems = () => {//Renders the list items under project-list div
         const projectList = document.getElementById("project-list");
         projectList.innerHTML = "";
         addListIds();
-        listItems.forEach((el) => {
-            const elDiv = document.createElement("div");
-            elDiv.innerHTML = el.projectTitle;
-            elDiv.id = "p" + el.id;
-            elDiv.classList.add("todo-project");
-            projectList.appendChild(elDiv)
+
+        listItems.forEach((list) => {
+            const listDiv = document.createElement("div");
+            listDiv.innerHTML = list.title;
+            listDiv.id = "p" + list.id;
+            listDiv.classList.add("todo-project");
+            projectList.appendChild(listDiv)
         });
     };
-    const renderTodoItems = () => {
-        const todoList = document.querySelector(".todo-list")
-        todoList.innerHTML = "";
-        addTodoIds();
-        listItems.forEach((el) => {
-            el.todos.forEach((todo, i) => {
-                const elDiv = document.createElement("div");
-                elDiv.innerHTML = todo.title;
-                elDiv.id = i;
-                elDiv.classList.add("todo");
-                todoList.appendChild(elDiv)
-            })
-        });
+    const renderTodoList = (id) => {// this will render each todo from a list
+        const projectList = listItems[id];
+        const listTodos = document.querySelector(".todo-list");
+        document.querySelector(".todo-list-name").innerHTML = projectList.title + " todolist:";
+        listTodos.id = "t" + id;
+        listTodos.innerHTML = "";
+        renderTodos(projectList, listTodos);
+    };
+    const renderTodos = (projectList, listTodos) => {
+        projectList.todos.forEach((todoObj, i) => {
+           const todo = document.createElement("div");
+           todo.innerHTML = todoObj.title;
+           todo.id = i;
+           todo.classList.add("todo");
+            listTodos.appendChild(todo);
+        })
     }
-    const renderTodoList = (id) => { 
-        const oldId = id;
-        id = Number(id.substring(1));
-        const projectListObj = listItems[id];
-        const projectTodos = document.querySelector(".todo-list");
-        projectTodos.id = "t" + id;
-        projectTodos.innerHTML = "";
 
-        renderTodoItems();
-    }
-    return {listItems, addListItem , renderListItems, renderTodoList, addTodoItem, renderTodoItems}
+    return {listItems, addListItem, renderListItems, renderTodoList}
 })();
 
-export default listData;
+export default listDataHandlers;
