@@ -40,6 +40,7 @@
 
 #add-todo-btn {
     @extend .add-list;
+    display: none;
 }
 
 .todo {

@@ -42,10 +42,13 @@ const listDataHandlers = (() => {
            todo.id = i;
            todo.classList.add("todo");
             listTodos.appendChild(todo);
-        })
+        });
+    };
+    const addTodoItem = (todoObj, listItemId) => {
+        listItems[listItemId].todos.push(todoObj);
     }
 
-    return {listItems, addListItem, renderListItems, renderTodoList}
+    return {listItems, addListItem, renderListItems, renderTodoList, addTodoItem}
 })();
 
 export default listDataHandlers;

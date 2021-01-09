@@ -2,7 +2,7 @@ import "./main.scss";
 import listDataHandlers from "./listDataHandlers.js"
 import listInputFunctions from "./listInputFunctions.js"
 import todoInputFunctions from "./todoInputFunctions.js"
-import todoDataHandlers from "./todoDataHandlers.js"
+import todoData from "./todoData.js"
 
 
 
@@ -27,22 +27,24 @@ const projectListItems = document.getElementById("project-list");
 projectListItems.addEventListener("click", function(e) {
     if (e.target.id) {
         listDataHandlers.renderTodoList(Number(e.target.id.substring(1)));
+        document.getElementById("add-todo-btn").style.display = "block";
     }
 })
-
-//UP TO HERE was refactored
 
 //Todo input buttons
 const addTodoBtn = document.getElementById("add-todo-btn");
 addTodoBtn.addEventListener("click", todoInputFunctions.openTodoInput);
+
 const closeTodoBtn = document.getElementById("close-todo-btn");
 closeTodoBtn.addEventListener("click", todoInputFunctions.closeTodoInput);
+
 const submitTodoBtn = document.getElementById("submit-todo-input") 
 submitTodoBtn.addEventListener("click", function(e) {
     e.preventDefault();
-    listDataHandlers.addTodoItem(todoDataHandlers.newTodo(todoInputFunctions.submitTodoInput()));
+    let todoListId = Number(document.querySelector(".todo-list").id.substring(1))
+    listDataHandlers.addTodoItem(todoData(todoInputFunctions.submitTodoInput()), todoListId);
     todoInputFunctions.resetTodoInput();
-    listDataHandlers.renderTodoList(Number(document.querySelector(".todo-list").id.substring(1)));
+    listDataHandlers.renderTodoList(todoListId);
 })
 //DOM STUFF
 
