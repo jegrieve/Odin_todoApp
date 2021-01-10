@@ -26,33 +26,41 @@
 
             </div>
 
-            <div class = "col-9 project-todos d-flex"><!--  todos on the right, col 8 -->
+            <div class = "col-5 project-todos"><!--  todos on the right, col 8 -->
+                <div id = "add-project">
+                    <div class = "input-title">Create a new project</div>
+                    <form>
+                        <div>
+                            <input type = "text" id = "add-project-input" placeholder = "add a project">
+                        </div>
+                        <div>
+                            <input id = "submit-list-input" type = "submit">
+                        </div>
+                    </form>
+                    <button id = "close-list-btn">exit</button>
+                </div>
+                 <div id = "add-todo">
+                    <form>
+                        <input type = "text" id = "add-todo-input" placeholder = "add todo">
+                        <input type = "text" id = "add-todo-description" placeholder = "description">
+                        <input type = "date" id = "add-todo-due-date">
+                        <input type = "checkbox" id = "add-todo-priority">
+                        <!-- if checked, todo will be bright yellow, otherwise, it will not be -->
+                        <input id = "submit-todo-input" type = "submit">
+                    </form>
+                    <button id = "close-todo-btn">exit</button>
+                 </div>
                 <div>
                     <div class = "todo-list-name">Select or create a project</div>
                     <svg id = "add-todo-btn" xmlns="http://www.w3.org/2000/svg" width="45" height="45" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
                     <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
                   </svg>
-                <div class = "todo-list">
-                    <!-- <div class = "todo">todo1</div>
-                    <div class = "todo">todo2</div>
-                    <div class = "todo">todo3</div> -->
-                </div>
-                <div id = "add-project">
-                    <button id = "close-list-btn">exit</button>
-                    <form>
-                        <input type = "text" id = "add-project-input" placeholder = "add a project">
-                        <input id = "submit-list-input" type = "submit">
-                    </form>
-                </div>
-                 <div id = "add-todo">
-                    <button id = "close-todo-btn">exit</button>
-                    <form>
-                        <input type = "text" id = "add-todo-input" placeholder = "add todo">
-                        <input id = "submit-todo-input" type = "submit">
-                    </form>
-                 </div>
-
+                <div class = "todo-list"></div>
             </div>
+        </div>
+        <div class = "col-4 project-todos-info">
+            <div class = "todo-info-name">test</div>
+            <div class = "todo-info-list"></div>
         </div>
         </section>
     </div>
