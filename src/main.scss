@@ -2,6 +2,7 @@
 
 .container-fluid{
     overflow: hidden;
+    word-wrap: break-word;
     }
 
 .navbar {
@@ -50,14 +51,28 @@
 #add-project {
     display: none;
     position: absolute;
-    width: 500px;
-    height: 500px;
+    width: 250px;
+    height: 250px;
     border: 1px solid black;
-    right: 350px;
     border-radius: 20px;
+    left: 30%;
+    right: 30%;
+    top: 20%;
 }
-
 
 #add-todo {
     @extend #add-project;
+    width: 400px;
+    height: 400px;
+}
+
+.input-title {
+    font-weight:bold;
+    font-size: 20px;
+    text-align: center;
+}
+
+.todo-info-name {
+    @extend .todo-list-name;
+    font-style: italic;
 }
