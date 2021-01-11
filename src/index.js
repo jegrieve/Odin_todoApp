@@ -3,6 +3,7 @@ import listDataHandlers from "./listDataHandlers.js"
 import listInputFunctions from "./listInputFunctions.js"
 import todoInputFunctions from "./todoInputFunctions.js"
 import todoData from "./todoData.js"
+import todoItemInfo from "./todoItemInfo.js"
 
 
 
@@ -25,9 +26,14 @@ submitListBtn.addEventListener("click", function(e) {
 
 const projectListItems = document.getElementById("project-list");
 projectListItems.addEventListener("click", function(e) {
-    if (e.target.id) {
+    if (!e.target.id.includes("pp")) {
+        document.querySelector(".todo-info-name").innerHTML = "";
+        document.querySelector(".todo-info-list").innerHTML = "";
         listDataHandlers.renderTodoList(Number(e.target.id.substring(1)));
         document.getElementById("add-todo-btn").style.display = "block";
+    } else {
+        listDataHandlers.deleteProject(Number(e.target.id.substring(2)));
+        listDataHandlers.refreshDom(Number(e.target.id.substring(2)));
     }
 })
 
@@ -46,5 +52,19 @@ submitTodoBtn.addEventListener("click", function(e) {
     todoInputFunctions.resetTodoInput();
     listDataHandlers.renderTodoList(todoListId);
 })
+
+const todoItemInfoList = document.querySelector(".todo-list");
+todoItemInfoList.addEventListener("click", function(e) {
+    if (e.target.id[0] !== "t") {
+        document.querySelector(".todo-info-list").innerHTML = "";
+        todoItemInfo.renderTodoInfo(listDataHandlers.getTodoInfo(e.target.id, Number(todoItemInfoList.id.substring(1))));
+    };
+});
+
 //DOM STUFF
 
+//todos:
+//delete buttons
+//toggle buttons
+//any changes etc
+//localstorage last
