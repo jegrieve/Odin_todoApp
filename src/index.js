@@ -55,10 +55,16 @@ submitTodoBtn.addEventListener("click", function(e) {
 
 const todoItemInfoList = document.querySelector(".todo-list");
 todoItemInfoList.addEventListener("click", function(e) {
-    if (e.target.id[0] !== "t") {
+    if (e.target.id[0] !== "b") {
         document.querySelector(".todo-info-list").innerHTML = "";
         todoItemInfo.renderTodoInfo(listDataHandlers.getTodoInfo(e.target.id, Number(todoItemInfoList.id.substring(1))));
-    };
+        //this is where the todo info is being rendered to the 3rd col.
+    } else {
+        todoItemInfoList.innerHTML = "";
+        listDataHandlers.deleteTodo(Number(todoItemInfoList.id.substring(1)), Number(e.target.id.substring(1)));
+        document.querySelector(".todo-info-list").innerHTML = "";
+        document.querySelector(".todo-info-name").innerHTML = "";
+    }
 });
 
 //DOM STUFF

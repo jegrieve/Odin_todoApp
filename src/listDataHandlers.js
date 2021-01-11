@@ -46,6 +46,11 @@ const listDataHandlers = (() => {
            todo.innerHTML = addBullet() + " " + todoObj.title;
            todo.id = i;
            todo.classList.add("todo");
+           let deleteBtn = document.createElement("button")
+           deleteBtn.innerHTML = "delete";
+           deleteBtn.id = "b" + todo.id;
+           deleteBtn.classList.add("delete-todo-btn");
+           todo.appendChild(deleteBtn);
             listTodos.appendChild(todo);
         });
     };
@@ -68,7 +73,7 @@ const listDataHandlers = (() => {
         return listItems[projectListId].todos[todoId];
     }
 
-    const refreshDom = (i) => {//this may be useful or may be deleted
+    const refreshDom = (i) => {
         if (i === Number(document.querySelector(".todo-list").id.substring(1))) {
             document.querySelector(".todo-list").innerHTML = "";
             document.querySelector(".todo-list-name").innerHTML = "Select or create a project";
@@ -79,7 +84,12 @@ const listDataHandlers = (() => {
         listItems.splice(i, 1);
         renderListItems();
     }
-    return {listItems, addListItem, renderListItems, renderTodoList, addTodoItem, getTodoInfo, deleteProject, refreshDom}
+
+    const deleteTodo = (projectId, todoId) => {
+        listItems[projectId].todos.splice(todoId, 1);
+        renderTodos(listItems[projectId], document.querySelector(".todo-list"))
+    }
+    return {listItems, addListItem, renderListItems, renderTodoList, addTodoItem, getTodoInfo, deleteProject, refreshDom, deleteTodo}
 })();
 
 export default listDataHandlers;
