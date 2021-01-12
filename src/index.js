@@ -51,10 +51,15 @@ closeTodoBtn.addEventListener("click", todoInputFunctions.closeTodoInput);
 const submitTodoBtn = document.getElementById("submit-todo-input") 
 submitTodoBtn.addEventListener("click", function(e) {
     e.preventDefault();
+    if (document.getElementById("add-todo-input").value.trim().length > 0 
+    && document.getElementById("add-todo-description").value.trim().length > 0
+    && document.getElementById("add-todo-due-date").value.trim().length >= 10) {
+    e.preventDefault();
     let todoListId = Number(document.querySelector(".todo-list").id.substring(1))
     listDataHandlers.addTodoItem(todoData(todoInputFunctions.submitTodoInput()), todoListId);
     todoInputFunctions.resetTodoInput();
     listDataHandlers.renderTodoList(todoListId);
+    };
 })
 
 const todoItemInfoList = document.querySelector(".todo-list");

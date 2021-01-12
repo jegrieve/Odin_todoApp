@@ -8,8 +8,12 @@
 .navbar {
     min-height: 43px;
     font-size: 25px;
-    background-color:#db4c3f;
+    background-color:#0918e2;
     color: white;
+}
+
+.github-icon {
+    margin-left: 20px;
 }
 
 .project-menu {
@@ -29,8 +33,18 @@
         background-color: rgba(114, 110, 110, 0.2);
         cursor: pointer;
       }
+      font-size: 20px;
+      font-weight: bold;
+      margin-top: 10px;
 }
 
+.btn-danger {
+    margin-left: 10px;
+}
+
+.bi {
+    padding-right: 5px;
+}
 #add-list-btn {
     @extend .add-list;
 }
@@ -43,6 +57,7 @@
 .todo-list-name {
     font-size: 30px;
     font-weight: bold;
+    text-decoration: underline;
 }
 
 #add-todo-btn {
@@ -52,6 +67,8 @@
 
 .todo {
     @extend .todo-project;
+    padding-top: 2px;
+    font-size: 22px;
 }
 
 .centered {
@@ -86,9 +103,28 @@
 
 .todo-info-name {
     @extend .todo-list-name;
+    text-decoration: none;
     font-style: italic;
 }
 
 .todo-item-info {
-    font-size: 18px;
+    font-size: 20px;
+    margin-top: 10px;
+    font-style:oblique;
+}
+
+.new-todo-input {
+    margin-top: 15px;
+}
+
+label {
+    font-weight: bold;
+}
+
+.delete-todo-btn {
+    margin-left: 15px;
+}
+
+.project-todos-info {
+    background-color: rgba(165, 165, 165, 0.1);
 }
