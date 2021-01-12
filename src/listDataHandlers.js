@@ -1,5 +1,5 @@
 const listDataHandlers = (() => {
-    const listItems = []; //This is where listobjs are stored
+    let listItems = []; //This is where listobjs are stored
 
     const addListItem = (title) => {// This is where listObjs are added
         listItems.push({title: title, 
@@ -70,11 +70,16 @@ const listDataHandlers = (() => {
     }
 
     const getTodoInfo = (todoId, projectListId) => {
+        if (listItems[projectListId].todos[todoId].priority !== "on" && listItems[projectListId].todos[todoId].priority !== "High") {
+            listItems[projectListId].todos[todoId].priority = "Low";
+        } else {
+            listItems[projectListId].todos[todoId].priority = "High"
+        }
         return listItems[projectListId].todos[todoId];
     }
 
     const refreshDom = (i) => {
-        if (i === Number(document.querySelector(".todo-list").id.substring(1))) {
+        if (i === Number(document.querySelector(".todo-list").id.substring(1)) || i === "run") {
             document.querySelector(".todo-list").innerHTML = "";
             document.querySelector(".todo-list-name").innerHTML = "Select or create a project";
             document.getElementById("add-todo-btn").style.display = "none";
@@ -89,7 +94,11 @@ const listDataHandlers = (() => {
         listItems[projectId].todos.splice(todoId, 1);
         renderTodos(listItems[projectId], document.querySelector(".todo-list"))
     }
-    return {listItems, addListItem, renderListItems, renderTodoList, addTodoItem, getTodoInfo, deleteProject, refreshDom, deleteTodo}
+
+    const deleteListItems = () => {
+        listItems = [];
+    }
+    return {listItems, addListItem, renderListItems, renderTodoList, addTodoItem, getTodoInfo, deleteProject, refreshDom, deleteTodo, deleteListItems}
 })();
 
 export default listDataHandlers;
