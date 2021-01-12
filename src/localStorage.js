@@ -1,5 +1,5 @@
 const checkLocalStorage = (listDataHandler) => {
-    if (localStorage.length !== 0) {
+    if (localStorage.length > 0) {
         getLocalStorage(listDataHandler);
     };
 };

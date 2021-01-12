@@ -14,6 +14,7 @@ clearLocalStorageBtn.addEventListener("click", function(e) {
     listDataHandlers.deleteListItems();
     listDataHandlers.renderListItems();
     listDataHandlers.refreshDom("run");
+    document.getElementById("project-list").innerHTML = "";
     document.querySelector(".todo-info-name").innerHTML = "";
     document.querySelector(".todo-info-list").innerHTML = "";
 });
@@ -86,3 +87,12 @@ todoItemInfoList.addEventListener("click", function(e) {
         updateLocalStorage(listDataHandlers);
     }
 });
+
+//I need to append a button to the todoiteminfo
+//This edit button will have an id based on project id and todo id (e00 for project 1 todo 1)
+//This edit button will then bring up a replica input for the todo with the prefilled values
+//This will then be the new values for that specific todo in that specific project
+//Then the todoinfo dom will refresh for that particular todo
+
+//Also.. one last thing: if todo info priority is high make the div red
+//If it is low make it light blue;

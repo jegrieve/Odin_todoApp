@@ -13,7 +13,6 @@ const todoItemInfo = (() => {
             i++;
         }
     };
-
     return {renderTodoInfo};
 })();
 

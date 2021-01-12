@@ -96,7 +96,10 @@ const listDataHandlers = (() => {
     }
 
     const deleteListItems = () => {
-        listItems = [];
+        let k = listItems.length;
+        for (let i = 0; i <= k; i++) {
+            listItems.pop();
+        }
     }
     return {listItems, addListItem, renderListItems, renderTodoList, addTodoItem, getTodoInfo, deleteProject, refreshDom, deleteTodo, deleteListItems}
 })();
