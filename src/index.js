@@ -17,11 +17,15 @@ const closeListBtn = document.getElementById("close-list-btn");
 closeListBtn.addEventListener("click", listInputFunctions.closeListInput);
 
 const submitListBtn = document.getElementById("submit-list-input") 
+
 submitListBtn.addEventListener("click", function(e) {
     e.preventDefault();
-    listDataHandlers.addListItem(listInputFunctions.submitListInput()); // add this value to the objectArray
-    listInputFunctions.resetListInput(); 
-    listDataHandlers.renderListItems();
+    if (document.getElementById("add-project-input").value.trim().length > 0) {
+        e.preventDefault();
+        listDataHandlers.addListItem(listInputFunctions.submitListInput()); // add this value to the objectArray
+        listInputFunctions.resetListInput(); 
+        listDataHandlers.renderListItems();
+    }
 })
 
 const projectListItems = document.getElementById("project-list");
@@ -67,10 +71,16 @@ todoItemInfoList.addEventListener("click", function(e) {
     }
 });
 
+//So, everytime i click on the specific todo, it will fill in the todoinfo,
+//it must also create a new button to it each time.
+//This button when clicked will basically: 1. open up the inputtodo box but with everything already prefilled
+//When u submit the input then it will re-render the todo-info on the screen
+
 //DOM STUFF
 
 //todos:
-//delete buttons
-//toggle buttons
-//any changes etc
-//localstorage last
+//Create edit button for todos
+//Toggle button that will strike-through and make the todo unclickable when its toggled
+//Fix html/css/ any other changes or things i forgot  (ex: the absolute displays need media query fixes)
+//localstorage (button to load localstorage --> loads the projects, button to save? or just autosaves?)
+//Just finish these things dont spend anymore time than you need to, this is only for learning and youve learned alot.

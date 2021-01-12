@@ -7,6 +7,7 @@
 
 .navbar {
     min-height: 43px;
+    font-size: 25px;
     background-color:#db4c3f;
     color: white;
 }
@@ -34,6 +35,11 @@
     @extend .add-list;
 }
 
+#submit-list-input {
+    margin-top: 20px;
+}
+
+
 .todo-list-name {
     font-size: 30px;
     font-weight: bold;
@@ -48,6 +54,10 @@
     @extend .todo-project;
 }
 
+.centered {
+    text-align: center;
+}
+
 #add-project {
     display: none;
     position: absolute;
@@ -58,6 +68,7 @@
     left: 30%;
     right: 30%;
     top: 20%;
+    background-color: rgba(114, 110, 110, 0.2)
 }
 
 #add-todo {
@@ -70,6 +81,7 @@
     font-weight:bold;
     font-size: 20px;
     text-align: center;
+    text-decoration: underline;
 }
 
 .todo-info-name {
