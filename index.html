@@ -8,7 +8,14 @@
 <body>
     <div class = "container-fluid p-0">
         <section class = "row"> <!-- navbar -->
-            <nav class = "col navbar justify-content-center"><b>TodoApp</b></nav>
+            <nav class = "col navbar justify-content-center">
+                <b>TodoApp</b>
+                <a href = "https://github.com/jegrieve/Odin_todoApp">
+                <svg class = "github-icon" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
+                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+                  </svg>
+                </a>
+            </nav>
         </section>
         <section class = "row"> <!-- main content-->
             <div class = "col-3 project-menu"><!-- project-menu col 4 -->
@@ -43,19 +50,36 @@
                     </div>
                 </div>
                  <div id = "add-todo">
-                    <form>
-                        <input type = "text" id = "add-todo-input" placeholder = "add todo">
-                        <input type = "text" id = "add-todo-description" placeholder = "description">
-                        <input type = "date" id = "add-todo-due-date">
-                        <input type = "checkbox" id = "add-todo-priority">
+                    <form class = "form-group">
+                        <div class = "input-title">Create a New Todo</div>
+                        <div class = "new-todo-input">
+                            <label for="add-todo-input">Todo Title:</label>
+                            <input type = "text" id = "add-todo-input" placeholder = "add todo">
+                        </div>
+                        <div class = "new-todo-input">
+                            <label for="add-todo-description">Description:</label>
+                            <input type = "text" id = "add-todo-description" placeholder = "description">
+                        </div>
+                        <div class = "new-todo-input">
+                            <label for="add-todo-due-date">Due Date:</label>
+                            <input type = "date" id = "add-todo-due-date">
+                        </div>
+                        <div class = "new-todo-input">
+                            <label for="add-todo-priority">High Priority:</label>
+                            <input type = "checkbox" id = "add-todo-priority" value = "high">
+                        </div>
+                        <div class = "new-todo-input centered">
+                            <input id = "submit-todo-input" class = "btn btn-primary" type = "submit">
+                        </div>
                         <!-- if checked, todo will be bright yellow, otherwise, it will not be -->
-                        <input id = "submit-todo-input" type = "submit">
                     </form>
-                    <button id = "close-todo-btn">exit</button>
+                    <div class = "centered">
+                    <button id = "close-todo-btn" class = "btn btn-dark">exit</button>
+                    </div>
                  </div>
                 <div>
                     <div class = "todo-list-name">Select or create a project</div>
-                    <svg id = "add-todo-btn" xmlns="http://www.w3.org/2000/svg" width="45" height="45" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                    <svg id = "add-todo-btn" xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
                     <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
                   </svg>
                 <div class = "todo-list"></div>
